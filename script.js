@@ -276,25 +276,28 @@ function restart () {
 function easterEgg () {
   update(locations[7]);
 }
+function pickTwo () {
+  pick(2);
+}
 
-function pick (guess) {
+function pickEight () {
+  pick(8);
+}
+function pick(guess) {
   const numbers = [];
   while (numbers.length < 10) {
-    numbers.push(Math.floor(Math.random() * 11)); //push a random number between 0 and 10 to the end of the numbers array
+    numbers.push(Math.floor(Math.random() * 11));
   }
-  text.innerText = 'You picked ' + guess + '. Here are the random numbers:\n'; // \n This will cause the next part you add to text.innerText to appear on a new line
-  for (let i = 0; x < 5; i++) {
-    //*for loops use i as the counter and start from 0
-    // for (a; b; c), where a is the initialization expression, b is the condition, and c is the final expression
-    text.innerText += numbers[i] + '\n';
+  text.innerText = "You picked " + guess + ". Here are the random numbers:\n";
+  for (let i = 0; i < 10; i++) {
+    text.innerText += numbers[i] + "\n";
   }
   if (numbers.includes(guess)) {
-    //*includes() method determines if an array contains an element and will return either true or false.
-    text.InnerText += 'Right! You win 20 gold!';
+    text.innerText += "Right! You win 20 gold!";
     gold += 20;
     goldText.innerText = gold;
   } else {
-    text.innerText += 'Wrong! You lose 10 health!';
+    text.innerText += "Wrong! You lose 10 health!";
     health -= 10;
     healthText.innerText = health;
     if (health <= 0) {
@@ -303,10 +306,4 @@ function pick (guess) {
   }
 }
 
-function pickTwo () {
-  pick(2);
-}
 
-function pickEight () {
-  pick(8);
-}
